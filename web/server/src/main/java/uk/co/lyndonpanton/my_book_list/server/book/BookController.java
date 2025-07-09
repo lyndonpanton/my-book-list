@@ -2,16 +2,25 @@ package uk.co.lyndonpanton.my_book_list.server.book;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 public class BookController {
     private final BookService bookService;
+
+    @PostMapping("/books")
+    public ResponseEntity<BookEntity> createBook(
+            @RequestBody BookEntity bookEntity) {
+        BookEntity createdBook = bookService.createBook(bookEntity);
+
+        return ResponseEntity.created(
+                URI.create("/books/" + createdBook.getId())
+        ).body(createdBook);
+    }
 
     @GetMapping("/books")
     public ResponseEntity<List<BookEntity>> readAllBooks() {

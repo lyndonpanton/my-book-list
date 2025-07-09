@@ -26,9 +26,12 @@ public class BookEntity {
     @Column
     public Integer pages;
 
-    @Column
-    public String coverUrl;
-
     @Column(length = 13)
     public String isbn;
+
+    @Column(columnDefinition = "TEXT")
+    public String details;
+
+    @Column(columnDefinition = "TEXT")
+    public String coverUrl;
 }

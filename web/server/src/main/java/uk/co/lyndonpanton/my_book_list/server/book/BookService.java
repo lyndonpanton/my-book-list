@@ -10,6 +10,10 @@ import java.util.List;
 public class BookService {
     private final BookRepository bookRepository;
 
+    public BookEntity createBook(BookEntity bookEntity) {
+        return bookRepository.save(bookEntity);
+    }
+
     public List<BookEntity> readAllBooks() {
         return bookRepository.findAll();
     }
