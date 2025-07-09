@@ -42,4 +42,17 @@ public class BookService {
 
         return null;
     }
+
+    public BookEntity deleteBookById(Long id) {
+        BookEntity bookEntity = bookRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Error: Book not found")
+        );
+
+        if (bookEntity != null) {
+            bookRepository.deleteById(id);
+            return bookEntity;
+        }
+
+        return null;
+    }
 }
