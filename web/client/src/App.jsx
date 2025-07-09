@@ -1,6 +1,8 @@
+import "./styles.css"
+
 import {useEffect, useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import LibraryBook from "./LibraryBook.jsx";
 
 function App() {
     const [books, setBooks] = useState([]);
@@ -14,10 +16,9 @@ function App() {
             }
 
             return null;
-        }).then((data) => {
+        }).then(async (data) => {
             if (data !== null) {
-                setBooks(data);
-                console.log(data);
+                setBooks(await data);
             }
         });
     }, []);
@@ -32,8 +33,17 @@ function App() {
                 <section>
                     <h2>Your Books</h2>
 
-                    <section>
-
+                    <section className="library">
+                        {
+                            books.map((book) => {
+                                return <LibraryBook
+                                            key={ book.id }
+                                            book={ book }
+                                            books={ books }
+                                            setBooks={ setBooks }
+                                />
+                            })
+                        }
                     </section>
                 </section>
             </main>

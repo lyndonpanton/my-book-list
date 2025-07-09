@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+
+    font-family: "Palatino Linotype", serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+button, input, select {
+    appearance: none;
+}
+
+/* Header *********************************************************************/
+
+/* Main ***********************************************************************/
+
+/* Library ********************************************************************/
+.library {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.library-book {
+    margin: 0 auto;
+}
+
+.library-book-title {
+    width: 300px;
+
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 1lh;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.library-book-author {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.library-book-cover {
+    display: block;
+
+    margin: 0 auto;
+    width: 200px;
+    height: 266px;
+}
+
+.library-book-pages {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.library-book-pages-count {
+    font-size: 1.3rem;
+}
+
+/* Book Dialog ****************************************************************/
+
+/* Footer *********************************************************************/
