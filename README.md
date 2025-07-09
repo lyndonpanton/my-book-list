@@ -2,8 +2,8 @@
 
 ## Description
 
-An application which allows users to add books and comics they have read to
-their reading list and modify them.
+An application which allows users to add books, poems, and comics they have read
+to their reading list and modify them.
 
 ## Getting Started
 
