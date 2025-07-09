@@ -17,8 +17,36 @@ button, input, select {
 }
 
 /* Header *********************************************************************/
+header {
+
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+/* Absolute *******************************************************************/
+.create-book {
+    position: fixed;
+    bottom: 80px;
+    left: 47%;
+
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 40px 50px;
+
+    background-color: #EEEEEE;
+
+    font-size: 2rem;
+    font-weight: bold;
+}
 
 /* Main ***********************************************************************/
+h2 {
+    font-size: 2.2rem;
+    text-align: center;
+}
 
 /* Library ********************************************************************/
 .library {
@@ -35,7 +63,6 @@ button, input, select {
 
     font-size: 1.8rem;
     font-weight: bold;
-    line-height: 1lh;
     overflow: hidden;
     text-align: center;
     text-overflow: ellipsis;
