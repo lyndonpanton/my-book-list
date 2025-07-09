@@ -1,9 +1,26 @@
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 function App() {
     const [books, setBooks] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/books", {
+            method: "GET"
+        }).then((response) => {
+            if (response.status === 200) {
+                return response.json();
+            }
+
+            return null;
+        }).then((data) => {
+            if (data !== null) {
+                setBooks(data);
+                console.log(data);
+            }
+        });
+    }, []);
 
     return (
         <>
