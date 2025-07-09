@@ -23,4 +23,23 @@ public class BookService {
                 () -> new RuntimeException("Error: Book not found")
         );
     }
+
+    public BookEntity updateBookById(Long id, BookEntity bookEntity) {
+        BookEntity updatedBookEntity = bookRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Error: Book not found")
+        );
+
+        if (updatedBookEntity != null) {
+            updatedBookEntity.setTitle(bookEntity.getTitle());
+            updatedBookEntity.setAuthor(bookEntity.getAuthor());
+            updatedBookEntity.setPages(bookEntity.getPages());
+            updatedBookEntity.setIsbn(bookEntity.getIsbn());
+            updatedBookEntity.setDetails(bookEntity.getDetails());
+            updatedBookEntity.setCoverUrl(bookEntity.getCoverUrl());
+
+            return bookRepository.save(updatedBookEntity);
+        }
+
+        return null;
+    }
 }
