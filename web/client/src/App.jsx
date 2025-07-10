@@ -4,11 +4,14 @@ import {useEffect, useState} from 'react'
 
 import LibraryBook from "./LibraryBook.jsx";
 import BookDialog from "./BookDialog.jsx";
+import BookDeleteDialog from "./BookDeleteDialog.jsx";
 
 function App() {
     const [books, setBooks] = useState([]);
     const [currentBookOpen, setCurrentBookOpen] = useState(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [currentDeleteBook, setCurrentDeleteBook] = useState(null);
+    const [isDeleteBookDialogOpen, setIsDeleteBookDialogOpen] = useState(false);
 
     const updateIsCreateDialogOpen = (e) => {
         currentBookOpen === null
@@ -45,18 +48,27 @@ function App() {
                     +
                 </button>
 
-                <section>
-                    {
-                        isDialogOpen
-                            ? <BookDialog
-                                    currentBookOpen={ currentBookOpen }
-                                    setCurrentBookOpen={ setCurrentBookOpen }
-                                    setIsDialogOpen={ setIsDialogOpen }
-                                    books={ books }
-                                    setBooks={ setBooks } />
-                            : null
-                    }
-                </section>
+                {
+                    isDialogOpen
+                        ? <BookDialog
+                                currentBookOpen={ currentBookOpen }
+                                setCurrentBookOpen={ setCurrentBookOpen }
+                                setIsDialogOpen={ setIsDialogOpen }
+                                books={ books }
+                                setBooks={ setBooks } />
+                        : null
+                }
+
+                {
+                    isDeleteBookDialogOpen
+                        ? <BookDeleteDialog
+                                currentDeleteBook={ currentDeleteBook }
+                                setCurrentDeleteBook={ setCurrentDeleteBook }
+                                books={ books }
+                                setBooks={ setBooks }
+                                setIsDeleteBookDialogOpen={ setIsDeleteBookDialogOpen } />
+                        : null
+                }
 
                 <section>
                     <h2>Your Books</h2>
@@ -67,10 +79,10 @@ function App() {
                                 return <LibraryBook
                                     key={book.id}
                                     book={book}
-                                    books={books}
-                                    setBooks={setBooks}
                                     setCurrentBookOpen={ setCurrentBookOpen }
                                     setIsDialogOpen={ setIsDialogOpen }
+                                    setCurrentDeleteBook={ setCurrentDeleteBook }
+                                    setIsDeleteBookDialogOpen={ setIsDeleteBookDialogOpen }
                                 />
                             })
                         }

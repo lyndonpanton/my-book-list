@@ -1,25 +1,12 @@
-const LibraryBook = ({ book, books, setBooks, setCurrentBookOpen, setIsDialogOpen }) => {
+const LibraryBook = ({ book, setCurrentBookOpen, setIsDialogOpen, setCurrentDeleteBook, setIsDeleteBookDialogOpen }) => {
 	const updateBook = () => {
 		setCurrentBookOpen(book);
 		setIsDialogOpen(true);
 	};
 
 	const deleteBook = () => {
-		fetch("http://localhost:8080/books/" + book.id, {
-			method: "DELETE"
-		}).then((response) => {
-			if (response.status === 200) {
-				return response.json();
-			}
-
-			return null;
-		}).then((data) => {
-			if (data !== null) {
-				setBooks(books.filter((book) => {
-					return book.id !== data.id;
-				}));
-			}
-		})
+		setCurrentDeleteBook(book);
+		setIsDeleteBookDialogOpen(true);
 	};
 
 	return (
