@@ -181,6 +181,30 @@ h2 {
     font-size: 1.3rem;
 }
 
+.library-book-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.library-book-button {
+    border-radius: 4px;
+    padding: 8px 16px;
+
+    color: white;
+    font-size: 1.2rem;
+}
+
+.library-book-button:first-child {
+    background-color: darkorange;
+    /*background-color: lightsalmon;*/
+}
+
+.library-book-button:last-child {
+    background-color: #ba1c1c;
+    /*background-color: lightcoral;*/
+}
+
 /* Book Dialog ****************************************************************/
 
 /* Footer *********************************************************************/

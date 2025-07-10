@@ -1,5 +1,25 @@
 const LibraryBook = ({ book, books, setBooks }) => {
+	const updateBook = () => {
 
+	};
+
+	const deleteBook = () => {
+		fetch("http://localhost:8080/books/" + book.id, {
+			method: "DELETE"
+		}).then((response) => {
+			if (response.status === 200) {
+				return response.json();
+			}
+
+			return null;
+		}).then((data) => {
+			if (data !== null) {
+				setBooks(books.filter((book) => {
+					return book.id !== data.id;
+				}));
+			}
+		})
+	};
 
 	return (
 		<article className="library-book">
@@ -12,6 +32,10 @@ const LibraryBook = ({ book, books, setBooks }) => {
 			<p className="library-book-pages">
 				Pages: <span className="library-book-pages-count">{ book.pages }</span>
 			</p>
+			<section className="library-book-buttons">
+				<button className="library-book-button" onClick={ updateBook }>Update</button>
+				<button className="library-book-button" onClick={ deleteBook }>Delete</button>
+			</section>
 		</article>
 	);
 }
