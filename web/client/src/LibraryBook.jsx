@@ -1,6 +1,7 @@
-const LibraryBook = ({ book, books, setBooks }) => {
+const LibraryBook = ({ book, books, setBooks, setCurrentBookOpen, setIsDialogOpen }) => {
 	const updateBook = () => {
-
+		setCurrentBookOpen(book);
+		setIsDialogOpen(true);
 	};
 
 	const deleteBook = () => {

@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const BookDialog = ({ currentBookOpen, setIsDialogOpen, books, setBooks }) => {
+const BookDialog = ({ currentBookOpen, setCurrentBookOpen, setIsDialogOpen, books, setBooks }) => {
 	const [title, setTitle] = useState("");
 	const [author, setAuthor] = useState("");
 	const [pages, setPages] = useState(0);
@@ -20,7 +20,7 @@ const BookDialog = ({ currentBookOpen, setIsDialogOpen, books, setBooks }) => {
 			}
 
 			if (currentBookOpen.coverUrl !== null) {
-				setTitle(currentBookOpen.coverUrl);
+				setCoverUrl(currentBookOpen.coverUrl);
 			}
 		}
 	}, []);
@@ -28,7 +28,7 @@ const BookDialog = ({ currentBookOpen, setIsDialogOpen, books, setBooks }) => {
 	const handleFormSubmission = (e) => {
 		e.preventDefault();
 
-		currentBookOpen !== null ? updateBook() : createBook();
+		currentBookOpen === null ? createBook() : updateBook();
 	};
 
 	const createBook = () => {
@@ -61,16 +61,56 @@ const BookDialog = ({ currentBookOpen, setIsDialogOpen, books, setBooks }) => {
 				setIsbn("");
 				setDetails("");
 				setCoverUrl("");
+
+				closeDialog();
 			}
 		});
 	};
 
 	const updateBook = () => {
+		fetch("http://localhost:8080/books/" + currentBookOpen.id, {
+			body: JSON.stringify({
+				title: title,
+				author: author,
+				pages: pages,
+				coverUrl: coverUrl,
+				details: details,
+				isbn: isbn
+			}),
+			headers: {
+				"content-type": "application/json"
+			},
+			method: "PUT"
+		}).then((response) => {
+			if (response.status === 200) {
+				return response.json();
+			}
 
+			return null;
+		}).then((data) => {
+			if (data !== null) {
+				setBooks(books.map((book) => {
+					return book.id === data.id
+						? {
+							...book,
+							title: data.title,
+							author: data.author,
+							pages: data.pages,
+							coverUrl: data.coverUrl,
+							details: data.details,
+							isbn: data.isbn,
+						}
+						: book;
+				}));
+
+				closeDialog();
+			}
+		});
 	};
 
 	const closeDialog = () => {
 		setIsDialogOpen(false);
+		setCurrentBookOpen(null);
 	};
 
 	const updateTitle = (e) => {
@@ -111,7 +151,8 @@ const BookDialog = ({ currentBookOpen, setIsDialogOpen, books, setBooks }) => {
 						placeholder="Title"
 						value={title}
 						onChange={updateTitle}
-						className="book-form-input"/>
+						className="book-form-input"
+						required={ true }/>
 				</label>
 
 				<label htmlFor="book-form-author" className="book-form-label">
@@ -122,7 +163,8 @@ const BookDialog = ({ currentBookOpen, setIsDialogOpen, books, setBooks }) => {
 						placeholder="Author"
 						value={author}
 						onChange={updateAuthor}
-						className="book-form-input"/>
+						className="book-form-input"
+						required={ true }/>
 				</label>
 
 				<label htmlFor="book-form-pages" className="book-form-label">
@@ -133,7 +175,8 @@ const BookDialog = ({ currentBookOpen, setIsDialogOpen, books, setBooks }) => {
 						placeholder="Pages"
 						value={pages}
 						onChange={updatePages}
-						className="book-form-input"/>
+						className="book-form-input"
+						required={ true }/>
 				</label>
 
 				<label htmlFor="book-form-cover" className="book-form-label">
@@ -144,7 +187,8 @@ const BookDialog = ({ currentBookOpen, setIsDialogOpen, books, setBooks }) => {
 						placeholder="Cover URL"
 						value={coverUrl}
 						onChange={updateCoverUrl}
-						className="book-form-input"/>
+						className="book-form-input"
+						required={ true }/>
 				</label>
 				<label htmlFor="book-form-isbn" className="book-form-label">
 					<span className="book-form-text">ISBN</span>
@@ -152,6 +196,8 @@ const BookDialog = ({ currentBookOpen, setIsDialogOpen, books, setBooks }) => {
 						id="book-form-isbn"
 						type="text"
 						placeholder="ISBN"
+						minLength={ 13 }
+						maxLength={ 13 }
 						value={isbn}
 						onChange={updateIsbn}
 						className="book-form-input"/>
@@ -165,17 +211,19 @@ const BookDialog = ({ currentBookOpen, setIsDialogOpen, books, setBooks }) => {
 						className="book-form-text-area">
 					</textarea>
 				</label>
-				{/*<input*/}
-				{/*	type="submit"*/}
-				{/*	value={*/}
-				{/*		currentBookOpen*/}
-				{/*			? "Update Book"*/}
-				{/*			: "Create Book"*/}
-				{/*	} />*/}
 				<input
 					type="submit"
-					value="Create Book"
-					className="book-form-submit" />
+					value={
+						currentBookOpen === null
+							? "Create Book"
+							: "Update Book"
+					}
+					className={
+						"book-form-submit" + " "
+						+ (currentBookOpen === null
+							? "book-form-submit-create"
+							: "book-form-submit-update")
+					} />
 			</form>
 		</div>
 	)

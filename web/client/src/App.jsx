@@ -50,6 +50,7 @@ function App() {
                         isDialogOpen
                             ? <BookDialog
                                     currentBookOpen={ currentBookOpen }
+                                    setCurrentBookOpen={ setCurrentBookOpen }
                                     setIsDialogOpen={ setIsDialogOpen }
                                     books={ books }
                                     setBooks={ setBooks } />
@@ -68,6 +69,8 @@ function App() {
                                     book={book}
                                     books={books}
                                     setBooks={setBooks}
+                                    setCurrentBookOpen={ setCurrentBookOpen }
+                                    setIsDialogOpen={ setIsDialogOpen }
                                 />
                             })
                         }
