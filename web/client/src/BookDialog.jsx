@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const BookDialog = ({ currentBookOpen, books, setBooks }) => {
+const BookDialog = ({ currentBookOpen, setIsDialogOpen, books, setBooks }) => {
 	const [title, setTitle] = useState("");
 	const [author, setAuthor] = useState("");
 	const [pages, setPages] = useState(0);
@@ -69,6 +69,10 @@ const BookDialog = ({ currentBookOpen, books, setBooks }) => {
 
 	};
 
+	const closeDialog = () => {
+		setIsDialogOpen(false);
+	};
+
 	const updateTitle = (e) => {
 		setTitle(e.target.value);
 	};
@@ -94,44 +98,86 @@ const BookDialog = ({ currentBookOpen, books, setBooks }) => {
 	};
 
 	return (
-		<form onSubmit={ handleFormSubmission }>
-			<input
-				type="text"
-				placeholder="Title"
-				value={title}
-				onChange={updateTitle}/>
-			<input
-				type="text"
-				placeholder="Author"
-				value={author}
-				onChange={updateAuthor}/>
-			<input
-				type="number"
-				placeholder="Pages"
-				value={pages}
-				onChange={updatePages}/>
-			<input
-				type="text"
-				placeholder="Cover URL"
-				value={coverUrl}
-				onChange={updateCoverUrl}/>
-			<textarea value={ details } onChange={ updateDetails }></textarea>
-			<input
-				type="text"
-				placeholder="ISBN"
-				value={isbn}
-				onChange={updateIsbn}/>
-			{/*<input*/}
-			{/*	type="submit"*/}
-			{/*	value={*/}
-			{/*		currentBookOpen*/}
-			{/*			? "Update Book"*/}
-			{/*			: "Create Book"*/}
-			{/*	} />*/}
-			<input
-				type="submit"
-				value="Submit" />
-		</form>
+		<div className="book-form-container">
+			<button className="book-form-container-close" onClick={ closeDialog }>
+				x
+			</button>
+			<form onSubmit={handleFormSubmission} className="book-form">
+				<label htmlFor="book-form-title" className="book-form-label">
+					<span className="book-form-text">Title*</span>
+					<input
+						id="book-form-title"
+						type="text"
+						placeholder="Title"
+						value={title}
+						onChange={updateTitle}
+						className="book-form-input"/>
+				</label>
+
+				<label htmlFor="book-form-author" className="book-form-label">
+					<span className="book-form-text">Author*</span>
+					<input
+						id="book-form-author"
+						type="text"
+						placeholder="Author"
+						value={author}
+						onChange={updateAuthor}
+						className="book-form-input"/>
+				</label>
+
+				<label htmlFor="book-form-pages" className="book-form-label">
+					<span className="book-form-text">Pages*</span>
+					<input
+						id="book-form-pages"
+						type="number"
+						placeholder="Pages"
+						value={pages}
+						onChange={updatePages}
+						className="book-form-input"/>
+				</label>
+
+				<label htmlFor="book-form-cover" className="book-form-label">
+					<span className="book-form-text">Cover URL*</span>
+					<input
+						id="book-form-cover"
+						type="text"
+						placeholder="Cover URL"
+						value={coverUrl}
+						onChange={updateCoverUrl}
+						className="book-form-input"/>
+				</label>
+				<label htmlFor="book-form-isbn" className="book-form-label">
+					<span className="book-form-text">ISBN</span>
+					<input
+						id="book-form-isbn"
+						type="text"
+						placeholder="ISBN"
+						value={isbn}
+						onChange={updateIsbn}
+						className="book-form-input"/>
+				</label>
+				<label htmlFor="book-form-details">
+					<span className="book-form-text-block">Description</span>
+					<textarea
+						id="book-form-details"
+						value={details}
+						onChange={updateDetails}
+						className="book-form-text-area">
+					</textarea>
+				</label>
+				{/*<input*/}
+				{/*	type="submit"*/}
+				{/*	value={*/}
+				{/*		currentBookOpen*/}
+				{/*			? "Update Book"*/}
+				{/*			: "Create Book"*/}
+				{/*	} />*/}
+				<input
+					type="submit"
+					value="Create Book"
+					className="book-form-submit" />
+			</form>
+		</div>
 	)
 };
 

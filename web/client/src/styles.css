@@ -42,6 +42,96 @@ h1 {
     font-weight: bold;
 }
 
+.book-form-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(200, 200, 200, 0.7);
+}
+
+.book-form-container-close {
+    position: absolute;
+    top: 30px;
+    right: 80px;
+
+    margin: 0;
+    border: none;
+    padding: 0;
+
+
+    background-color: transparent;
+
+    color: white;
+    /*font-size: 8rem;*/
+    transform: scale(10);
+
+}
+
+.book-form {
+    position: relative;
+    top: 10%;
+
+    margin: 0 auto;
+    width: 40%;
+    height: 80%;
+    border-radius: 8px;
+    padding: 80px 0;
+
+    background-color: white;
+}
+
+.book-form-label {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 auto 10px;
+    width: 75%;
+}
+
+.book-form-text {
+    font-size: 1.8rem;
+}
+
+.book-form-input {
+    font-size: 1.8rem;
+}
+
+.book-form-text-block {
+    display: block;
+
+    margin: 40px 0 0;
+    width: 100%;
+
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.book-form-text-area {
+    display: block;
+
+    margin: 20px auto 40px;
+    width: 70%;
+    height: 120px;
+
+    resize: none;
+}
+
+.book-form-submit {
+    display: block;
+
+    margin: 0 auto;
+    border-radius: 4px;
+    padding: 10px 40px;
+
+    background-color: #AADDFF;
+
+    font-size: 1.5rem;
+}
+
 /* Main ***********************************************************************/
 h2 {
     font-size: 2.2rem;

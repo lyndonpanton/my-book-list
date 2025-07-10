@@ -8,14 +8,14 @@ import BookDialog from "./BookDialog.jsx";
 function App() {
     const [books, setBooks] = useState([]);
     const [currentBookOpen, setCurrentBookOpen] = useState(null);
-    const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const updateIsCreateDialogOpen = (e) => {
         currentBookOpen === null
             ? setCurrentBookOpen(null)
             : setCurrentBookOpen(currentBookOpen);
 
-        setIsCreateDialogOpen(true);
+        setIsDialogOpen(true);
     }
 
     useEffect(() => {
@@ -47,9 +47,10 @@ function App() {
 
                 <section>
                     {
-                        isCreateDialogOpen
+                        isDialogOpen
                             ? <BookDialog
                                     currentBookOpen={ currentBookOpen }
+                                    setIsDialogOpen={ setIsDialogOpen }
                                     books={ books }
                                     setBooks={ setBooks } />
                             : null
