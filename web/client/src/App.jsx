@@ -3,9 +3,12 @@ import "./styles.css"
 import {useEffect, useState} from 'react'
 
 import Header from "./Header.jsx";
+
 import LibraryBook from "./LibraryBook.jsx";
 import BookDialog from "./BookDialog.jsx";
 import BookDeleteDialog from "./BookDeleteDialog.jsx";
+
+import Footer from "./Footer.jsx";
 
 function App() {
     const appTitle = "My Book List";
@@ -91,15 +94,7 @@ function App() {
                 </section>
             </main>
 
-            <footer>
-                <section>
-                <p>
-                        &copy;
-                        <span> { new Date().getFullYear() } </span>
-                        Lyndon Mykal Panton | All Rights Reserved
-                    </p>
-                </section>
-            </footer>
+            <Footer />
         </>
     )
 }

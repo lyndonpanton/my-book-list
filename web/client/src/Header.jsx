@@ -1,4 +1,4 @@
-import "./Header.css"
+import "./Header.css";
 
 import {useState} from "react";
 

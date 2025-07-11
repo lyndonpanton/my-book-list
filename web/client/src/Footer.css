@@ -1,0 +1,16 @@
+button, input, select {
+    appearance: none;
+}
+
+footer {
+    padding: 40px 0;
+    background-color: var(--colour-h);
+}
+
+.footer-copyright {
+    text-align: center;
+}
+
+.footer-copyright, .footer-copyright-year {
+    font-size: 1.3rem;
+}

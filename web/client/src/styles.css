@@ -34,7 +34,13 @@ html {
 }
 
 header, main, footer {
-    padding: 0 15vw;
+    padding-right: 15vw;
+    padding-left: 15vw;
+}
+
+main {
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 /* Absolute *******************************************************************/
