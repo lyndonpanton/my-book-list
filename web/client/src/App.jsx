@@ -12,12 +12,14 @@ import Footer from "./Footer.jsx";
 
 function App() {
     const appTitle = "My Book List";
+    const [filterValue, setFilterValue] = useState("");
 
     const [books, setBooks] = useState([]);
     const [currentBookOpen, setCurrentBookOpen] = useState(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [currentDeleteBook, setCurrentDeleteBook] = useState(null);
     const [isDeleteBookDialogOpen, setIsDeleteBookDialogOpen] = useState(false);
+
 
     const updateIsCreateDialogOpen = (e) => {
         currentBookOpen === null
@@ -45,7 +47,10 @@ function App() {
 
     return (
         <>
-            <Header appTitle={ appTitle } />
+            <Header
+                appTitle={ appTitle }
+                filterValue={ filterValue }
+                setFilterValue={ setFilterValue} />
 
             <main>
                 <button className="create-book" onClick={ updateIsCreateDialogOpen }>
@@ -80,14 +85,23 @@ function App() {
                     <section className="library">
                         {
                             books.map((book) => {
-                                return <LibraryBook
-                                    key={book.id}
-                                    book={book}
-                                    setCurrentBookOpen={ setCurrentBookOpen }
-                                    setIsDialogOpen={ setIsDialogOpen }
-                                    setCurrentDeleteBook={ setCurrentDeleteBook }
-                                    setIsDeleteBookDialogOpen={ setIsDeleteBookDialogOpen }
-                                />
+                                if (
+                                    book.title.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
+                                    || book.author.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
+                                    || book.isbn.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
+                                    ) {
+
+                                    return <LibraryBook
+                                        key={book.id}
+                                        book={book}
+                                        setCurrentBookOpen={ setCurrentBookOpen }
+                                        setIsDialogOpen={ setIsDialogOpen }
+                                        setCurrentDeleteBook={ setCurrentDeleteBook }
+                                        setIsDeleteBookDialogOpen={ setIsDeleteBookDialogOpen }
+                                    />
+                                } else {
+                                    return null
+                                }
                             })
                         }
                     </section>

@@ -2,12 +2,10 @@ import "./Header.css";
 
 import {useState} from "react";
 
-const Header = ({ appTitle }) => {
-	const [searchValue, setSearchValue] = useState("");
+const Header = ({ appTitle, filterValue, setFilterValue }) => {
 
 	const updateSearchValue = (e) => {
-		setSearchValue(e.target.value);
-		console.log(searchValue);
+		setFilterValue(e.target.value);
 	};
 
 	return (
@@ -17,9 +15,8 @@ const Header = ({ appTitle }) => {
 				id="header-search"
 				type="text"
 				placeholder="Filter..."
-				value={ searchValue }
-				onChange={ updateSearchValue }
-				/>
+				value={ filterValue }
+				onChange={ updateSearchValue } />
 		</header>
 	)
 };
