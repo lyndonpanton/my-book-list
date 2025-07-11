@@ -1,0 +1,39 @@
+button, input, select {
+    appearance: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--colour-h);
+
+    box-shadow:
+        3px 0 4px #BBBBBB,
+        6px 0 4px #DDDDDD,
+        9px 0 4px #FFFFFF;
+}
+
+h1 {
+    /*display: inline-block;*/
+
+    font-size: 1.5rem;
+}
+
+#header-search {
+    width: 500px;
+    height: 30px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    padding: 4px 10px;
+    /*height: 120%;*/
+    /*display: inline-block;*/
+}
+
+#header-search:focus {
+    border-color: var(--colour-k);
+    outline: none;
+
+    font-weight: bold;
+}

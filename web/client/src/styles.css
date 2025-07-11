@@ -1,3 +1,16 @@
+:root {
+    --colour-a: #8F48F1;
+    --colour-b: #7B3ECF;
+    --colour-c: #934BFA;
+    --colour-d: #6734AD;
+    --colour-e: #522A8B;
+    --colour-f: #3E2069;
+    --colour-g: #FAFAFA;
+    --colour-h: #EECCEE;
+    --colour-j: #EEDDEE;
+    --colour-k: #CCAACC;
+}
+
 * {
     box-sizing: border-box;
 
@@ -7,23 +20,21 @@
     font-weight: normal;
 }
 
-body, html {
+body {
     margin: 0;
-    padding: 0;
 }
 
 button, input, select {
     appearance: none;
 }
 
-/* Header *********************************************************************/
-header {
-
+html {
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-    font-size: 3rem;
-    text-align: center;
+header, main, footer {
+    padding: 0 15vw;
 }
 
 /* Absolute *******************************************************************/
@@ -155,9 +166,9 @@ h2 {
 }
 
 .library-book-title {
-    width: 300px;
+    width: 250px;
 
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
     overflow: hidden;
     text-align: center;

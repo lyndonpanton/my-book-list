@@ -1,3 +1,5 @@
+import "./Header.css"
+
 import {useState} from "react";
 
 const Header = ({ appTitle }) => {
@@ -14,7 +16,7 @@ const Header = ({ appTitle }) => {
 			<input
 				id="header-search"
 				type="text"
-				placeholder="Search..."
+				placeholder="Filter..."
 				value={ searchValue }
 				onChange={ updateSearchValue }
 				/>
