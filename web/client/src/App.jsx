@@ -2,11 +2,14 @@ import "./styles.css"
 
 import {useEffect, useState} from 'react'
 
+import Header from "./Header.jsx";
 import LibraryBook from "./LibraryBook.jsx";
 import BookDialog from "./BookDialog.jsx";
 import BookDeleteDialog from "./BookDeleteDialog.jsx";
 
 function App() {
+    const appTitle = "My Book List";
+
     const [books, setBooks] = useState([]);
     const [currentBookOpen, setCurrentBookOpen] = useState(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -39,9 +42,7 @@ function App() {
 
     return (
         <>
-            <header>
-                <h1>My Book List</h1>
-            </header>
+            <Header appTitle={ appTitle } />
 
             <main>
                 <button className="create-book" onClick={ updateIsCreateDialogOpen }>
