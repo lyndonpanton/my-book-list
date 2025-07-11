@@ -7,6 +7,28 @@ footer {
     background-color: var(--colour-h);
 }
 
+.footer-profile {
+
+}
+
+.footer-profile-list {
+
+}
+
+.footer-profile-list-heading {
+    font-size: 2rem;
+}
+
+.footer-profile-list-item {
+    font-size: 2rem;
+    list-style-type: none;
+}
+
+.footer-profile-list-item > a, .footer-profile-list-item > a:visited {
+    color: black;
+    font-size: 1.4rem;
+}
+
 .footer-copyright {
     text-align: center;
 }
