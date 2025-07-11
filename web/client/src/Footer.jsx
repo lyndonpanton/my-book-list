@@ -30,7 +30,7 @@ const Footer = () => {
 	return (
 		<footer>
 			<section className="footer-profile">
-				<ul>
+				<ul className="footer-profile-list">
 					<li className="footer-profile-list-heading footer-profile-list-item">Developer Profile</li>
 					{
 						developerProfile.map((profile, index) => {
@@ -42,7 +42,7 @@ const Footer = () => {
 						})
 					}
 				</ul>
-				<ul>
+				<ul className="footer-profile-list">
 					<li className="footer-profile-list-heading footer-profile-list-item">Languages and Frameworks</li>
 					{
 						languagesFrameworks.map((lf, index) => {
@@ -54,7 +54,7 @@ const Footer = () => {
 						})
 					}
 				</ul>
-				<ul>
+				<ul className="footer-profile-list">
 					<li className="footer-profile-list-heading footer-profile-list-item">Tools</li>
 					{
 						tools.map((tool, index) => {
@@ -66,7 +66,7 @@ const Footer = () => {
 						})
 					}
 				</ul>
-				<ul>
+				<ul className="footer-profile-list">
 					<li className="footer-profile-list-heading footer-profile-list-item">More Projects</li>
 					{
 						moreProjects.map((project, index) => {
@@ -79,16 +79,40 @@ const Footer = () => {
 					}
 				</ul>
 			</section>
-			<section className="footer-extenal">
-				<ul>
-					<li>Privacy Policy</li>
-					<li>Terms and Conditions</li>
-					<li>Cookies</li>
+			<section className="footer-external">
+				<ul className="footer-external-list">
+					<li className="footer-external-list-item">
+						<a href="" target="_blank" className="footer-external-list-link">
+							Privacy Policy
+						</a>
+					</li>
+					<li className="footer-external-list-item">
+						<a href="" target="_blank" className="footer-external-list-link">
+							Terms and Conditions
+						</a>
+					</li>
+					<li className="footer-external-list-item">
+						<a href="" target="_blank" className="footer-external-list-link">
+							Cookies
+						</a>
+					</li>
 				</ul>
-				<ul>
-					<li>???</li>
-					<li>???</li>
-					<li>???</li>
+				<ul className="footer-external-list">
+					<li className="footer-external-list-item">
+						<a href="" target="_blank" className="footer-external-list-link">
+							???
+						</a>
+					</li>
+					<li className="footer-external-list-item">
+						<a href="" target="_blank" className="footer-external-list-link">
+							???
+						</a>
+					</li>
+					<li className="footer-external-list-item">
+						<a href="" target="_blank" className="footer-external-list-link">
+							???
+						</a>
+					</li>
 				</ul>
 			</section>
 			<p className="footer-copyright">
